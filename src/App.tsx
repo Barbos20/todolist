@@ -23,7 +23,7 @@ import { AppRootStateType } from './state/store';
 
 
 export type FilterValuesType = 'all' | 'active' | 'completed';
-export type TodolistType = {
+export type TodolistDomainType = {
     id: string
     title: string
     filter: FilterValuesType
@@ -36,7 +36,7 @@ export type TasksStateType = {
 
 function App() {
 
-    const todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todolists)
+    const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(state => state.todolists)
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
     const dispatch = useDispatch();
 
