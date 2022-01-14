@@ -33,6 +33,12 @@ export type ChangeTaskTitleActionType = {
   title: string;
 };
 
+export type SetTasksActionType = {
+  type: 'SET-TASKS';
+  tasks: Array<TaskType>;
+  todolistId: string;
+};
+
 type ActionsType =
   | RemoveTaskActionType
   | AddTaskActionType
@@ -40,7 +46,8 @@ type ActionsType =
   | ChangeTaskTitleActionType
   | AddTodolistActionType
   | RemoveTodolistActionType
-  | SetTodolistsActionType;
+  | SetTodolistsActionType
+  | SetTasksActionType;
 
 const initialState: TasksStateType = {};
 
@@ -52,7 +59,7 @@ export const tasksReducer = (
     case 'REMOVE-TASK': {
       const stateCopy = { ...state };
       const tasks = stateCopy[action.todolistId];
-      const newTasks = tasks.filter((t) => t.id != action.taskId);
+      const newTasks = tasks.filter((t) => t.id !== action.taskId);
       stateCopy[action.todolistId] = newTasks;
       return stateCopy;
     }
@@ -103,6 +110,11 @@ export const tasksReducer = (
       action.todolists.forEach((tl) => {
         copyState[tl.id] = [];
       });
+      return copyState;
+    }
+    case 'SET-TASKS': {
+      const copyState = { ...state };
+      copyState[action.todolistId] = action.tasks;
       return copyState;
     }
     default:

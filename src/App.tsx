@@ -15,6 +15,7 @@ import {
     addTodolistAC,
     changeTodolistFilterAC,
     changeTodolistTitleAC,
+    fetchTodolistsThunkTC,
     removeTodolistAC,
     setTodolistsAC
 } from './state/todolists-reducer';
@@ -39,11 +40,7 @@ export type TasksStateType = {
 function App() {
 
     useEffect(()=>{
-        todolistsAPI.getTodolists()
-        .then(res=>{
-            const action =setTodolistsAC(res.data);
-            dispatch(action);
-        })
+        dispatch(fetchTodolistsThunkTC())
     },[])
 
     const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(state => state.todolists)
