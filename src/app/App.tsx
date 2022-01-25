@@ -14,10 +14,13 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { Menu } from '@mui/icons-material';
 import { ErrorSnackbars } from '../components/ErrorSnackbar/ErrorSnackbar';
+import { useSelector } from 'react-redux';
+import { RequestStatusType } from './app-reducer';
+import { AppRootStateType } from './store';
 
 
 function App() {
-
+const status = useSelector<AppRootStateType,RequestStatusType>((state)=>state.app.status)
     return (
         <div className="App">
             <ErrorSnackbars/>
@@ -31,7 +34,7 @@ function App() {
                     </Typography>
                     <Button color="inherit">Login</Button>
                 </Toolbar>
-                <LinearProgress/>
+                {status === 'loading' && <LinearProgress/>}
             </AppBar>
             <Container fixed>
                 <TodolistsList/>
