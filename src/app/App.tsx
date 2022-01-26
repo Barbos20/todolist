@@ -1,7 +1,7 @@
-import React from 'react'
-import './App.css'
-import { TodolistsList } from '../features/TodolistsList/TodolistsList'
-import LinearProgress from '@material-ui/core/LinearProgress'
+import React from 'react';
+import './App.css';
+import { TodolistsList } from '../features/TodolistsList/TodolistsList';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 // You can learn about the difference by reading this guide on minimizing bundle size.
 // https://mui.com/guides/minimizing-bundle-size/
@@ -18,29 +18,28 @@ import { useSelector } from 'react-redux';
 import { RequestStatusType } from './app-reducer';
 import { AppRootStateType } from './store';
 
-
 function App() {
-const status = useSelector<AppRootStateType,RequestStatusType>((state)=>state.app.status)
-    return (
-        <div className="App">
-            <ErrorSnackbars/>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton edge="start" color="inherit" aria-label="menu">
-                        <Menu/>
-                    </IconButton>
-                    <Typography variant="h6">
-                        News
-                    </Typography>
-                    <Button color="inherit">Login</Button>
-                </Toolbar>
-                {status === 'loading' && <LinearProgress/>}
-            </AppBar>
-            <Container fixed>
-                <TodolistsList/>
-            </Container>
-        </div>
-    )
+  const status = useSelector<AppRootStateType, RequestStatusType>(
+    (state) => state.app.status
+  );
+  return (
+    <div className="App">
+      <ErrorSnackbars />
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton edge="start" color="inherit" aria-label="menu">
+            <Menu />
+          </IconButton>
+          <Typography variant="h6">News</Typography>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+        {status === 'loading' && <LinearProgress />}
+      </AppBar>
+      <Container fixed>
+        <TodolistsList />
+      </Container>
+    </div>
+  );
 }
 
-export default App
+export default App;
