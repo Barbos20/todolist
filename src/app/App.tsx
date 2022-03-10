@@ -13,6 +13,8 @@ import Container from '@mui/material/Container';
 import LinearProgress from '@mui/material/LinearProgress';
 import { Menu } from '@mui/icons-material';
 import { ErrorSnackbar } from '../components/ErrorSnackbar/ErrorSnackbar'
+import { Link, Route, Routes } from 'react-router-dom'
+import { Login } from '../features/TodolistsList/Login/Login'
 
 type PropsType = {
     demo?: boolean
@@ -21,6 +23,7 @@ type PropsType = {
 function App({demo = false}: PropsType) {
     const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
     return (
+        
         <div className="App">
             <ErrorSnackbar/>
             <AppBar position="static">
@@ -31,14 +34,17 @@ function App({demo = false}: PropsType) {
                     <Typography variant="h6">
                         News
                     </Typography>
-                    <Button color="inherit">Login</Button>
                 </Toolbar>
                 {status === 'loading' && <LinearProgress/>}
             </AppBar>
             <Container fixed>
-                <TodolistsList demo={demo}/>
+                <Routes>
+                <Route path='/' element={<TodolistsList demo={demo}/>}/>
+                <Route path='/login' element={<Login/>}/>
+                </Routes>
             </Container>
         </div>
+        
     )
 }
 
