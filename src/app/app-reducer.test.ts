@@ -2,12 +2,12 @@ import {appReducer, InitialStateType, setAppErrorAC, setAppStatusAC} from './app
 
 let startState: InitialStateType;
 
-beforeEach(() => {
-    startState = {
-        error: null,
-        status: 'idle'
-    }
-})
+// beforeEach(() => {
+//     startState = {
+//         error: null,
+//         status: 'idle'
+//     }
+// })
 
 test('correct error message should be set', () => {
 
