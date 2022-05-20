@@ -19,7 +19,7 @@
     "@types/storybook-react-router": "^1.0.1",
     "@types/uuid": "^7.0.3",
     "axios": "^0.27.2",
-    "formik": "^2.1.5",
+    "formik": "^2.2.9",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
