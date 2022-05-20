@@ -77,17 +77,23 @@ export const Todolist = React.memo(function ({demo = false, ...props}: PropsType
     }
 
     return <Paper style={{padding: '10px', position: 'relative'}}>
-        <IconButton
+        {/* <IconButton
             size={'small'}
             onClick={removeTodolist} disabled={props.todolist.entityStatus === 'loading'}
                     style={{position: 'absolute', right: '5px', top: '5px'}}
         >
             
-        </IconButton>
+        </IconButton> */}
         
         <h3>
             <EditableSpan value={props.todolist.title} onChange={changeTodolistTitle}/>
-            <Delete fontSize={'small'} style={{marginLeft: '80%'}}/>
+            <IconButton
+            size={'small'}
+            onClick={removeTodolist} disabled={props.todolist.entityStatus === 'loading'}
+                    style={{position: 'absolute', right: '5px', top: '25px'}}
+        >
+            <Delete fontSize={'small'} />
+            </IconButton>
         </h3>
         <AddItemForm addItem={addTaskCallback} disabled={props.todolist.entityStatus === 'loading'}/>
         <div>
