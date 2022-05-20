@@ -4,11 +4,11 @@ import {GetTasksResponse, LoginParamsType, ResponseType, TaskType, TodolistType,
 const settings = {
     withCredentials: true,
     headers: {
-        'API-KEY': 'db31b322-9cb3-4e7c-bb11-7a7023622799'
+        'API-KEY': 'ae4c0827-6155-4862-b7b1-6a29a889cbae'
     }
 }
 const instance = axios.create({
-    baseURL: 'https://social-network.samuraijs.com/api/1.1/',
+    baseURL: 'https://social-network.samuraijs.com/api/1.0',
     ...settings
 })
 
